@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="theme-color" content="#000000" />
+        <link rel="stylesheet" href="css/style.css" />
+        <title>Todo App</title>
+    </head>
+    <body>
+        <header>
+            <h1>
+                <span
+                    ><svg
+                        viewBox="0 0 48 48"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="1.5em"
+                        width="1.5em"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M23.8 44q-4.2-.05-7.825-1.6T9.7 38.15q-2.65-2.7-4.175-6.325T4 24q0-4.25 1.55-7.9Q7.1 12.45 9.8 9.75q2.7-2.7 6.35-4.225Q19.8 4 24 4q3 0 5.9.875 2.9.875 5.6 2.625.55.35.625.95.075.6-.325 1.1-.4.5-1 .6-.6.1-1.15-.25-2.25-1.45-4.675-2.175Q26.55 7 24 7q-7.25 0-12.125 4.875T7 24q0 7.25 4.875 12.125T24 41q1.95 0 3.85-.4 1.9-.4 3.65-1.25.6-.25 1.2-.15t.95.6q.4.55.25 1.175-.15.625-.7.875-2.2 1.1-4.55 1.625Q26.3 44 23.8 44ZM20 32.05l-6.1-6.15q-.45-.45-.45-1.1 0-.65.5-1.15.45-.45 1.125-.475.675-.025 1.125.475l4.85 4.9 19.6-19.6q.45-.45 1.1-.475.65-.025 1.15.475.5.5.5 1.15 0 .65-.5 1.15l-20.8 20.8q-.45.45-1.075.45T20 32.05Zm20 7.45q-.65 0-1.075-.425Q38.5 38.65 38.5 38v-4.5H34q-.65 0-1.075-.425Q32.5 32.65 32.5 32q0-.65.425-1.075Q33.35 30.5 34 30.5h4.5V26q0-.65.425-1.075Q39.35 24.5 40 24.5q.65 0 1.075.425.425.425.425 1.075v4.5H46q.65 0 1.075.425.425.425.425 1.075 0 .65-.425 1.075-.425.425-1.075.425h-4.5V38q0 .65-.425 1.075-.425.425-1.075.425Z"
+                        /></svg></span
+                >Todo App
+            </h1>
+            <div id="time1">
+                <span id="time"></span><small id="ampm"></small>
+            </div>
+            <!--<small id="ampm"></small>-->
+            <div id="date"></div>
+            <div id="today"></div>
+        </header>
+        <section class="main">
+            <div class="column"></div>
+            <div class="grid">
+                <div class="overlay">There is no tasks yet.</div>
+            </div>
+        </section>
+        <template>
+            <div class="task">
+                <label class="checkbox">
+                    <input type="checkbox" onchange="done(this)" />
+                    <span
+                        class="checkbox-label"
+                        onclick="complete(this)"
+                    ></span>
+                </label>
+                <h2>My Template Task</h2>
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Distinctio, rerum.
+                </p>
+                <div class="tools">
+                    <span onclick="deleteTask(this)">
+                        <svg
+                            viewBox="0 0 48 48"
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1.5em"
+                            width="1.5em"
+                        >
+                            <path
+                                fill="currentColor"
+                                d="M13.05 42q-1.2 0-2.1-.9-.9-.9-.9-2.1V10.5H9.5q-.65 0-1.075-.425Q8 9.65 8 9q0-.65.425-1.075Q8.85 7.5 9.5 7.5h7.9q0-.65.425-1.075Q18.25 6 18.9 6h10.2q.65 0 1.075.425.425.425.425 1.075h7.9q.65 0 1.075.425Q40 8.35 40 9q0 .65-.425 1.075-.425.425-1.075.425h-.55V39q0 1.2-.9 2.1-.9.9-2.1.9Zm0-31.5V39h21.9V10.5Zm5.3 22.7q0 .65.425 1.075.425.425 1.075.425.65 0 1.075-.425.425-.425.425-1.075V16.25q0-.65-.425-1.075-.425-.425-1.075-.425-.65 0-1.075.425-.425.425-.425 1.075Zm8.3 0q0 .65.425 1.075.425.425 1.075.425.65 0 1.075-.425.425-.425.425-1.075V16.25q0-.65-.425-1.075-.425-.425-1.075-.425-.65 0-1.075.425-.425.425-.425 1.075Zm-13.6-22.7V39 10.5Z"
+                            />
+                        </svg>
+                    </span>
+                    <span onclick="editTask(this)">
+                        <svg
+                            viewBox="0 0 48 48"
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1.5em"
+                            width="1.5em"
+                        >
+                            <path
+                                fill="currentColor"
+                                d="M9 39h2.2l22.15-22.15-2.2-2.2L9 36.8Zm30.7-24.3-6.4-6.4 2.1-2.1q.85-.85 2.125-.825 1.275.025 2.125.875L41.8 8.4q.85.85.85 2.1t-.85 2.1ZM7.5 42q-.65 0-1.075-.425Q6 41.15 6 40.5v-4.3q0-.3.1-.55.1-.25.35-.5L31.2 10.4l6.4 6.4-24.75 24.75q-.25.25-.5.35-.25.1-.55.1Zm24.75-26.25-1.1-1.1 2.2 2.2Z"
+                            />
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </template>
+        <div class="container">
+            <footer>
+                <input type="search" placeholder="Type your task" />
+                <button type="submit">
+                    <svg
+                        viewBox="0 0 48 48"
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="2.8em"
+                        width="2.8em"
+                    >
+                        <path
+                            fill="currentColor"
+                            d="M24 38q-.65 0-1.075-.425-.425-.425-.425-1.075v-11h-11q-.65 0-1.075-.425Q10 24.65 10 24q0-.65.425-1.075.425-.425 1.075-.425h11v-11q0-.65.425-1.075Q23.35 10 24 10q.65 0 1.075.425.425.425.425 1.075v11h11q.65 0 1.075.425Q38 23.35 38 24q0 .65-.425 1.075-.425.425-1.075.425h-11v11q0 .65-.425 1.075Q24.65 38 24 38Z"
+                        />
+                    </svg>
+                </button>
+            </footer>
+        </div>
+        <div id="modal">
+            <div id="modal-box">
+                <h3>New Task</h3>
+                <form id="form">
+                    <div class="taskname">
+                        <label class="taskLabel" for="taskname"
+                            >Task name <small>(required)</small>
+                        </label>
+                        <input
+                            id="taskname"
+                            onfocus="focusInput(this)"
+                            onblur="outFocus(this)"
+                            name="taskname"
+                            type="text"
+                            required
+                        />
+                    </div>
+                    <div class="details">
+                        <label class="detailsLabel" for="details"
+                            >Details</label
+                        >
+                        <input
+                            type="text"
+                            onfocus="focusInput(this)"
+                            onblur="outFocus(this)"
+                            id="details"
+                            name="details"
+                        />
+                    </div>
+                    <div id="error"></div>
+                    <button
+                        id="btn"
+                        type="submit"
+                        onclick="Add_Edit_Task(event)"
+                    >
+                        Add
+                    </button>
+                </form>
+            </div>
+        </div>
+        <button id="modal-btn" onclick="openModal(this)">
+            <svg
+                viewBox="0 0 48 48"
+                xmlns="http://www.w3.org/2000/svg"
+                height="1.5em"
+                width="1.5em"
+            >
+                <path
+                    fill="currentColor"
+                    d="M24 38q-.65 0-1.075-.425-.425-.425-.425-1.075v-11h-11q-.65 0-1.075-.425Q10 24.65 10 24q0-.65.425-1.075.425-.425 1.075-.425h11v-11q0-.65.425-1.075Q23.35 10 24 10q.65 0 1.075.425.425.425.425 1.075v11h11q.65 0 1.075.425Q38 23.35 38 24q0 .65-.425 1.075-.425.425-1.075.425h-11v11q0 .65-.425 1.075Q24.65 38 24 38Z"
+                />
+            </svg>
+        </button>
+        <script src="js/index.js"></script>
+    </body>
+</html>
