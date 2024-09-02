@@ -1,7 +1,7 @@
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 console.log("start", tasks);
 let idList = tasks.map(task => task.id);
-let lastId = Math.max(...idList) || 0;
+let lastId = Math.max(...idList, 1);
 const overlay = document.querySelector(".main .grid .overlay");
 let timeout;
 let edit = false;
