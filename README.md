@@ -29,10 +29,10 @@ Welcome to the TodoApp project! This simple yet effective application allows use
 
 To get started with the TodoApp, follow these steps:
 
-1. **Clone the repository**
+1. **Create new folder**
 
     ```bash
-    git clone https://github.com/yourusername/todoapp.git
+    mkdir todoapp
     ```
 
 2. **Navigate to the project directory**
@@ -41,13 +41,20 @@ To get started with the TodoApp, follow these steps:
     cd todoapp
     ```
 
-3. **Open the `index.html` file in your browser**
+3. **Clone the repository**
+
+    ```bash
+    git clone https://github.com/yourusername/todoapp.git
+    ```
+
+4. **Open the `index.html` file in your browser**
 
 ## Usage
 
 -   Simply type a task into the input field and click the "Add" button to create a new task.
 -   Click on a task to mark it as completed.
--   Use the "Delete" button to remove any task from your list.
+-   Use the "Delete" button to remove any task from your list or double click if the task already completed.
+-   Use the "Edit" button to edit a task.
 -   Your tasks will be saved even after refreshing the page, thanks to localStorage!
 
 ## Contributing
