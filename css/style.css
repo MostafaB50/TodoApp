@@ -1,16 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;500&display=swap");
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: poppins;
+    font-family: "Poppins", sans-serif;
     overflow: none;
 }
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
 ::-webkit-scrollbar {
     opacity: 0;
-}
-@font-face {
-    font-family: poppins;
-    src: url("../assets/fonts/Poppins-Medium.ttf");
 }
 body {
     background: black;
