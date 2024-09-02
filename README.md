@@ -44,7 +44,7 @@ To get started with the TodoApp, follow these steps:
 3. **Clone the repository**
 
     ```bash
-    git clone https://github.com/yourusername/todoapp.git
+    git clone https://github.com/mostafab50/todoapp.git
     ```
 
 4. **Open the `index.html` file in your browser**
@@ -56,6 +56,10 @@ To get started with the TodoApp, follow these steps:
 -   Use the "Delete" button to remove any task from your list or double click if the task already completed.
 -   Use the "Edit" button to edit a task.
 -   Your tasks will be saved even after refreshing the page, thanks to localStorage!
+
+## Live Demo
+
+https://mostafab50.github.io/TodoApp
 
 ## Contributing
 
