@@ -1,8 +1,9 @@
 let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
 console.log("start", tasks);
 let idList = tasks.map(task => task.id);
-let lastId = Math.max(...idList, 1);
+let lastId = Math.max(...idList, 0);
 const overlay = document.querySelector(".main .grid .overlay");
+const message = "You Haven't Enter any Details About This Task";
 let timeout;
 let edit = false;
 let taskElement;
@@ -200,9 +201,7 @@ function Add_Edit_Task(event) {
             let newTask = {
                 id: taskId,
                 head: taskName.value,
-                body:
-                    taskDetails.value ||
-                    "You Haven't Enter any Details About This Task",
+                body: taskDetails.value || message,
                 fin: false
             };
             if (
@@ -211,6 +210,8 @@ function Add_Edit_Task(event) {
                 !newTask.head
             ) {
                 error.textContent = "Enter Your Edits First";
+                edit = false;
+                taskElement = null;
                 return;
             } else if (
                 newTask.head !== oldTasks[index].head ||
@@ -245,9 +246,7 @@ function Add_Edit_Task(event) {
     const newTask = {
         id: ++lastId || 1,
         head: taskName.value,
-        body:
-            taskDetails.value ||
-            "You Haven't Enter any Details About This Task",
+        body: taskDetails.value || message,
         fin: false
     };
     if (document.querySelector(".overlay")) {
@@ -295,12 +294,16 @@ function editTask($this) {
     modal.style.display = "flex";
     const index = tasks.findIndex(obj => obj.id === taskId);
     taskName.value = tasks[index].head;
-    taskDetails.value = tasks[index].body;
+    if (tasks[index].body === message) {
+        taskDetails.value = "";
+    } else {
+        taskDetails.value = tasks[index].body;
+        document.querySelector(".detailsLabel").classList.add("focusClass");
+    }
     document.querySelector(".taskLabel").classList.add("focusClass");
-    document.querySelector(".detailsLabel").classList.add("focusClass");
     edit = true;
     taskElement = $this.closest(".task");
-    console.log("editt", tasks);
+    console.log("editt", tasks, taskDetails.value === message);
 }
 
 document.addEventListener("DOMContentLoaded", loadTasks(tasks));
