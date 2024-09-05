@@ -152,6 +152,7 @@ function openModal($this) {
     const error = document.getElementById("error");
     const modal = document.getElementById("modal");
     const taskName = document.getElementById("taskname");
+    const modalTitle = document.querySelector("#modal #modal-box h3");
     const taskDetails = document.getElementById("details");
     const btn = document.getElementById("btn");
     if ($this.classList.contains("rotate")) {
@@ -169,6 +170,7 @@ function openModal($this) {
             taskElement = null;
         }
         modal.style.display = "none";
+        modalTitle.textContent = "New Task";
         btn.textContent = "Add";
         return;
     }
@@ -188,6 +190,7 @@ function Add_Edit_Task(event) {
     const btnModal = document.getElementById("modal-btn");
     const form = document.getElementById("form");
     const taskName = document.getElementById("taskname");
+    const modalTitle = document.querySelector("#modal #modal-box h3");
     const taskDetails = document.getElementById("details");
     const error = document.getElementById("error");
     const grid = document.querySelector(".main .grid");
@@ -233,6 +236,7 @@ function Add_Edit_Task(event) {
             }
         }
         console.log(taskId);
+        modalTitle.textContent = "New Task";
         btn.textContent = "Add";
         btnModal.style.transform = "rotate(0)";
         btnModal.classList.remove("rotate");
@@ -287,9 +291,11 @@ function editTask($this) {
     const taskName = document.getElementById("taskname");
     const taskDetails = document.getElementById("details");
     const btnModal = document.getElementById("modal-btn");
+    const modalTitle = document.querySelector("#modal #modal-box h3");
     const btn = document.getElementById("btn");
     console.log(taskId);
     btn.textContent = "Edit";
+    modalTitle.textContent = "Edit task";
     btnModal.style.transform = "rotate(-45deg)";
     btnModal.classList.remove("rerotate");
     btnModal.classList.add("rotate");
