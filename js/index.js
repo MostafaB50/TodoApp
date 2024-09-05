@@ -164,6 +164,10 @@ function openModal($this) {
         $this.style.transform = "rotate(0)";
         $this.classList.remove("rotate");
         $this.classList.add("rerotate");
+        if (edit) {
+            edit = false;
+            taskElement = null;
+        }
         modal.style.display = "none";
         btn.textContent = "Add";
         return;
@@ -210,8 +214,6 @@ function Add_Edit_Task(event) {
                 !newTask.head
             ) {
                 error.textContent = "Enter Your Edits First";
-                edit = false;
-                taskElement = null;
                 return;
             } else if (
                 newTask.head !== oldTasks[index].head ||
